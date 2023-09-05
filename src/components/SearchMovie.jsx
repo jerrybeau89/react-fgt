@@ -1,47 +1,47 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { red, green } from "@mui/material/colors";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
+function SearchMovie({getMovie}) {
+  const [movieName, setMovieName] = useState("");
 
-const theme = createTheme({
-  palette: {
-    primary: red,
-    secondary: green,
-  },
-});
-function SearchMovie() {
+  const handleSearch = () => {
+    if (movieName.trim() !== "") {
+      getMovie(movieName);
+      setMovieName("");
+    }
+  };
 
-  
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
 
   return (
     <div className="search">
-      {/* <Stack spacing={2} sx={{ width: 300 }}> */}
-      {/* <Autocomplete
-        freeSolo
-        id="free-solo-2-demo"
-        disableClearable
-        options={top100Films.map((option) => option.title)}
-        renderInput={(params) => ( */}
       <TextField
-      className="searchBar"
-        // {...params}
+        className="searchBar"
         label="Movie Search..."
         autoFocus={true}
         margin="normal"
         type="search"
-        theme={theme}
-        // sx={{backgroundColor: "white", borderRadius: "15px"}}
-        // InputProps={{
-        //   ...params.InputProps,
-        //   type: "search",
-        // }}
+        // theme={theme}
+        value={movieName}
+        onChange={(e) => setMovieName(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
-      {/* )}
-      /> */}
-      {/* </Stack> */}
+      <IconButton aria-label="search movie" onClick={handleSearch}>
+        <SearchIcon />
+      </IconButton>
     </div>
   );
 }

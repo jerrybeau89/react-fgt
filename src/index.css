@@ -17,19 +17,21 @@
 body {
   margin: 0;
   background-color: blanchedalmond;
-  height: 100vh;
+  height: 100%;
 }
 
-.header{
+.header {
   background-color: lightcoral;
 }
-.fgt-img{
+
+.fgt-img {
   height: 20px;
   object-fit: scale-down;
   max-width: 50%;
 }
+
 .search {
-  margin: 0;
+  margin-left: 10px;
   display: flex;
   justify-content: start;
 }
@@ -37,6 +39,19 @@ body {
 .searchBar {
   background-color: white;
   border-radius: 15px;
+}
+
+.moviesContainer {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-content: space-around;
+  align-content: space-around;
+  justify-items: center;
+  align-items: center;
+  margin: 15px;
+}
+.movieCard {
+  margin: 15px;
 }
 
 .footer {
@@ -50,7 +65,6 @@ body {
   max-width: 750px;
   /* opacity: 90%; */
 }
-
 
 @media (prefers-color-scheme: light) {
   :root {

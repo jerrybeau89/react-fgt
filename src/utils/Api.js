@@ -1,16 +1,22 @@
-require('dotenv').config();
-
-const apiKeyOMDB = process.env.OMDB_API_KEY;
-const apiKeyTMDB = process.env.TMDB_API_Key
+const apiKeyOMDB = import.meta.env.VITE_REACT_APP_OMDB_API_KEY;
+const apiKeyTMDB = import.meta.env.VITE_REACT_APP_TMDB_API_Key;
 
 export async function getMovieData(movieName) {
-    const OMDBUrl = `https://www.omdbapi.com/?t=${movieName}&apikey=${apiKeyOMDB}`;
+    const OMDBUrlSearch = `https://www.omdbapi.com/?s=${movieName}&apikey=${apiKeyOMDB}`;
     
+ try {
+   const omdbSearchResponse = await fetch(OMDBUrlSearch);
+   const omdbSearchData = await omdbSearchResponse.json();
+   console.log(omdbSearchData)
 
-  //Random number generator used to determine the page query for the API call.
-  const queryNum = function getRandomNumber(max) {
-    return Math.floor(Math.random() * max);
-  }
+   const movieData = omdbSearchData.Search.map((item) => ({
+     title: item.Title,
+     poster: item.Poster,
+   }));
 
-  const getOMDBResponse = await fetch()
+   return {movieData}
+ } catch (error) {
+   console.error("Error fetching movie data:", error);
+   throw error;
+ }
 }
