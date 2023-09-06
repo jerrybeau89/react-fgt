@@ -4,7 +4,7 @@ import MovieCard from "./MovieCard";
 function MovieDisplay({movieData}) {
   return (
     <div className="moviesContainer">
-      <MovieCard className="movieCard" movieDataInfo={movieData} />
+      <MovieCard  movieDataInfo={movieData} />
     </div>
   );
 }

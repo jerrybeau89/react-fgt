@@ -16,6 +16,7 @@ import Profile from "../pages/Profile";
 import About from "../pages/About";
 
 import FGT from "../assets/images/FGTH.png"
+import { Link } from "react-router-dom";
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
@@ -133,8 +134,11 @@ export default function MenuAppBar() {
             open={Boolean(anchorElTwo)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>
-              <About />
+            <MenuItem component={Link} to="/Home" onClick={handleClose}>
+              Home
+            </MenuItem>
+            <MenuItem component={Link} to="/About" onClick={handleClose}>
+              About
             </MenuItem>
           </Menu>
         </Toolbar>

@@ -12,6 +12,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
+import { Grid } from "@mui/material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -35,9 +36,15 @@ function MovieInfo({movieDataInfo}) {
     return <div > Please Search for a Movie to Display</div>
   }
   return (
-    <>
+    <Grid
+      container
+      justifyContent="space-around"
+      alignItems="center"
+      spacing={{ xs: 2, md: 3 }}
+      columns={{ xs: 4, sm: 8, md: 12 }}
+    >
       {movieDataInfo.map((movie, index) => (
-        <Card sx={{ maxWidth: 300 }} key={index}>
+        <Card className="movieCard" key={index}>
           <CardHeader title={movie.title} />
           <CardMedia
             component="img"
@@ -112,7 +119,7 @@ function MovieInfo({movieDataInfo}) {
           </CardContent>
         </Collapse>
       </Card> */}
-    </>
+    </Grid>
   );
 }
 

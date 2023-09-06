@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import { getMovieData } from "./utils/Api";
-import SearchMovie from "./components/SearchMovie";
-import MovieDisplay from "./components/MovieDisplay";
+import { Route, Routes } from "react-router-dom";
+
+import About from "./pages/About";
+import Home from "./pages/Home";
+
 
 function App() {
-  const [movieData, setMovieData] = useState(null);
-  // const [movieData, setMovieData] = useState(null);
-
-  const handleGetMovie = async (movieName) => {
-    try {
-      const { movieData } = await getMovieData(movieName);
-      setMovieData(movieData);
-    } catch (error) {
-      alert("Error getting movie data.", error);
-    }
-  };
+  
 
   return (
-    <>
-      <SearchMovie getMovie={handleGetMovie} />
-      <MovieDisplay movieData={movieData} />
-    </>
+    <Routes>
+      <Route
+        path="/Home"
+        exact
+        element={<Home/> }
+      />
+      {/* <Route
+        path="/Movie"
+        exact
+        element={}
+      /> */}
+      <Route path="/About" exact element={<About />} />
+    </Routes>
   );
 }
 
