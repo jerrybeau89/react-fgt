@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Recents from "./pages/Recents";
 
 
 function App() {
@@ -12,15 +13,15 @@ function App() {
   return (
     <Routes>
       <Route
-        path="/Home"
+        path="*"
         exact
         element={<Home/> }
       />
-      {/* <Route
-        path="/Movie"
+      <Route
+        path="/Recents"
         exact
-        element={}
-      /> */}
+        element={<Recents/>}
+      />
       <Route path="/About" exact element={<About />} />
     </Routes>
   );

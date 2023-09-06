@@ -6,6 +6,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FeaturedVideoIcon from "@mui/icons-material/FeaturedVideo";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const [value, setValue] = React.useState(0);
@@ -29,7 +30,12 @@ function Footer() {
           value={value}
           onChange={(event, newValue) => handleChange(event, newValue)}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction
+            label="Recents"
+            component={Link}
+            to="/Recents"
+            icon={<RestoreIcon />}
+          />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction
             label="Featured"

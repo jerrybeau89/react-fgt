@@ -6,14 +6,10 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-// import Switch from "@mui/material/Switch";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Favorites from "../pages/Favorites";
 import Profile from "../pages/Profile";
-import About from "../pages/About";
 
 import FGT from "../assets/images/FGTH.png"
 import { Link } from "react-router-dom";
@@ -41,18 +37,6 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {/* <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup> */}
       <AppBar position="static">
         <Toolbar className="header">
           {auth && (
@@ -134,7 +118,7 @@ export default function MenuAppBar() {
             open={Boolean(anchorElTwo)}
             onClose={handleClose}
           >
-            <MenuItem component={Link} to="/Home" onClick={handleClose}>
+            <MenuItem component={Link} to="/" onClick={handleClose}>
               Home
             </MenuItem>
             <MenuItem component={Link} to="/About" onClick={handleClose}>
