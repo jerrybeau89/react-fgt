@@ -7,11 +7,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FeaturedVideoIcon from "@mui/icons-material/FeaturedVideo";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import {handleClick} from "../utils/helpers"
 
 function Footer() {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef(null);
-  
+
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -36,9 +38,18 @@ function Footer() {
             to="/Recents"
             icon={<RestoreIcon />}
           />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction
+            label="Favorites"
+            // component={Link}
+            // to="/Favorites"
+            onClick={handleClick}
+            icon={<FavoriteIcon />}
+          />
           <BottomNavigationAction
             label="Featured"
+            // component={Link}
+            // to="/Featured"
+            onClick={handleClick}
             icon={<FeaturedVideoIcon />}
           />
         </BottomNavigation>

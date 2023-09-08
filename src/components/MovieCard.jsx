@@ -25,14 +25,14 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-function MovieInfo({movieDataInfo}) {
+function MovieCard({movieInfo}) {
   const [expanded, setExpanded] = React.useState(false);
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  if (!movieDataInfo) {
+  if (!movieInfo) {
     return <div > Please Search for a Movie to Display</div>
   }
   return (
@@ -43,7 +43,7 @@ function MovieInfo({movieDataInfo}) {
       spacing={{ xs: 2, md: 3 }}
       columns={{ xs: 4, sm: 8, md: 12 }}
     >
-      {movieDataInfo.map((movie, index) => (
+      {movieInfo.map((movie, index) => (
         <Card className="movieCard" key={index}>
           <CardHeader title={movie.title} />
           <CardMedia
@@ -82,45 +82,8 @@ function MovieInfo({movieDataInfo}) {
           </Collapse>
         </Card>
       ))}
-      {/* <Card sx={{ maxWidth: 500 }} className="movieCard">
-        <CardHeader title={movieDataInfo.title} />
-        <CardMedia
-          component="img"
-          height="194"
-          image={movieDataInfo.poster}
-          alt="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Movie Data
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>
-              Placeholder for expanded movie data.
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card> */}
     </Grid>
   );
 }
 
-export default MovieInfo;
+export default MovieCard;
