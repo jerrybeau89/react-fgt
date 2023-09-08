@@ -1,11 +1,11 @@
 import React from 'react'
 
-function MoviePage() {
+function Featured() {
   return (
     <div className="alertBox">
       <br />
       <br />
-      This is the Movie Page
+      This is the Featured Page
       <br />
       <br />
       <br />
@@ -19,4 +19,4 @@ function MoviePage() {
   );
 }
 
-export default MoviePage
+export default Featured

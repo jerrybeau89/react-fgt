@@ -8,9 +8,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import Favorites from "../pages/Favorites";
-import Profile from "../pages/Profile";
-
 import FGT from "../assets/images/FGTH.png"
 import { Link } from "react-router-dom";
 
@@ -66,11 +63,11 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
-                  <Profile />
+                <MenuItem component={Link} to="/Profile" onClick={handleClose}>
+                  Profile
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Favorites />
+                <MenuItem component={Link} to="/Favorites" onClick={handleClose}>
+                  Favorites
                 </MenuItem>
               </Menu>
             </div>

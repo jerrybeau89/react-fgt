@@ -3,13 +3,13 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-function SearchMovie({getMovie}) {
+function SearchMovie({ getMovie }) {
   const [movieName, setMovieName] = useState("");
 
   const handleSearch = () => {
     if (movieName.trim() !== "") {
-      getMovie(movieName);
       setMovieName("");
+      getMovie(movieName);
     }
   };
 
