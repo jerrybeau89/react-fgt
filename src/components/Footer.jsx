@@ -47,9 +47,9 @@ function Footer() {
           />
           <BottomNavigationAction
             label="Featured"
-            // component={Link}
-            // to="/Featured"
-            onClick={handleClick}
+            component={Link}
+            to="/Featured"
+            // onClick={handleClick}
             icon={<FeaturedVideoIcon />}
           />
         </BottomNavigation>

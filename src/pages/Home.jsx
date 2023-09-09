@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import SearchMovie from "../components/SearchMovie";
-import { getMovieData } from "../utils/Api";
+import { getMovieData, getFeaturedData } from "../utils/Api";
 import MovieDisplay from "../components/MovieDisplay";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Recents from "./Recents";
+import Featured from "./Featured";
 
 function Home() {
   const [movieData, setMovieData] = useState(null);
   const location = useLocation();
-  const searchQuery = new URLSearchParams(location.search).get("query")
+  const searchQuery = new URLSearchParams(location.search).get("query");
   const [searchList, setSearchList] = useState([]);
 
   useEffect(() => {
@@ -17,10 +18,11 @@ function Home() {
       setSearchList(JSON.parse(storedSearchHistory));
     }
 
-    if (searchQuery){
+    if (searchQuery) {
       handleGetMovie(searchQuery);
     }
-  },[searchQuery]);
+  }, [searchQuery]);
+
   const handleGetMovie = async (movieName) => {
     try {
       const { movieData } = await getMovieData(movieName);
@@ -33,7 +35,7 @@ function Home() {
 
   const updateSearchHistory = (movie) => {
     const movieName = movie.charAt(0).toUpperCase() + movie.slice(1);
-    
+
     setSearchList((prevSearchList) => {
       if (!prevSearchList.includes(movieName)) {
         const updatedSearchList = [...prevSearchList, movieName];
@@ -57,6 +59,7 @@ function Home() {
             <Recents searchList={searchList} getMovie={handleGetMovie} />
           }
         />
+        <Route path="/Featured" element={<Featured/>}/>
       </Routes>
       <MovieDisplay movieData={movieData} />
     </>
