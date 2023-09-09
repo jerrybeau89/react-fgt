@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { getFeaturedData } from "../utils/Api"
+import MovieDisplay from "../components/MovieDisplay"
 
 function Featured() {
+  const [featuredData, setFeaturedData] = useState([]);
+
+  useEffect(() => {
+  const handleGetFeatured = async () => {
+    try {
+      const { featuredData } = await getFeaturedData();
+      setFeaturedData(featuredData);
+    } catch (error) {
+      alert("Error getting featured movies.", error);
+    }
+  };
+
+  handleGetFeatured()
+},[])
+
+ 
+  if (!featuredData) {
+    return <div> Please Search for a Movie to Display</div>;
+  }
   return (
-    <div className="alertBox">
-      <br />
-      <br />
-      This is the Featured Page
-      <br />
-      <br />
-      <br />
-      <div className="alertMessage">
-        It appears you have selected a page that it currently under
-        construction. If you believe this to be an error, please feel free to
-        reach out with any questions or concerns! Other wise, return to home to
-        continue your movie search, thank you!
-      </div>
+   <div>
+    <h2>Featured Movies</h2>
+    <div>
+      <MovieDisplay movieData={featuredData}/>
     </div>
+   </div>
+        
   );
 }
 
-export default Featured
+export default Featured;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { fromLocalStorage } from "../utils/localStorage";
 
-function Recents({ getMovie }) {
+function Recents() {
     const [recentsList, setRecentsList] = useState([]);
     const navigate = useNavigate();
 
