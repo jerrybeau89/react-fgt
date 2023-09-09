@@ -6,6 +6,7 @@ dotenv.config();
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/react-fgt",
   plugins: [react()],
   optimizeDeps: {
     include: ["@emotion/styled"],
