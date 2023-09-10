@@ -8,6 +8,7 @@ import Recents from "./pages/Recents";
 import Featured from "./pages/Featured";
 import Profile from "./pages/Profile";
 import Favorites from "./pages/Favorites";
+import MoviePage from "./pages/MoviePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/Favorites" exact element={<Favorites />} />
       <Route path="/Featured" exact element={<Featured />} />
       <Route path="/About" exact element={<About />} />
+      <Route path="/MoviePage" exact element={<MoviePage />} />
     </Routes>
   );
 }

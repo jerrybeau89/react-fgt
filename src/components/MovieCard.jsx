@@ -11,8 +11,11 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from "@mui/material/Button";
 import { useState } from "react";
 import { Grid } from "@mui/material";
+import MoviePage from "../pages/MoviePage";
+import { Link } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,15 +28,15 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-function MovieCard({movieInfo}) {
+function MovieCard({ movieInfo }) {
   const [expanded, setExpanded] = React.useState(false);
-  
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   if (!movieInfo) {
-    return <div > Please Search for a Movie to Display</div>
+    return <div> Please Search for a Movie to Display</div>;
   }
   return (
     <Grid
@@ -64,6 +67,9 @@ function MovieCard({movieInfo}) {
             <IconButton aria-label="share">
               <ShareIcon />
             </IconButton>
+            <Link to={`/MoviePage?id=${index}`} state={{movieInfo: movie}} size="small">
+              More
+            </Link>
             <ExpandMore
               expand={expanded}
               onClick={handleExpandClick}
