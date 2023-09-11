@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -11,10 +11,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
-import { useState } from "react";
 import { Grid } from "@mui/material";
-import MoviePage from "../pages/MoviePage";
 import { Link } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
@@ -29,10 +26,12 @@ const ExpandMore = styled((props) => {
 }));
 
 function MovieCard({ movieInfo }) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState([]);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (index) => {
+    const newExpanded = [...expanded];
+    newExpanded[index] = !newExpanded[index];
+    setExpanded(newExpanded);
   };
 
   if (!movieInfo) {
@@ -53,11 +52,11 @@ function MovieCard({ movieInfo }) {
             component="img"
             height="194"
             image={movie.poster}
-            alt="Paella dish"
+            alt={movie.title}
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              {/* {movie.rating} */}
+              <span>Popularity: {movie.popularity}</span>
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
@@ -67,22 +66,32 @@ function MovieCard({ movieInfo }) {
             <IconButton aria-label="share">
               <ShareIcon />
             </IconButton>
-            <Link to={`/MoviePage?id=${index}`} state={{movieInfo: movie}} size="small">
+            <Link
+              to={`/MoviePage?id=${index}`}
+              state={{ movieInfo: movie }}
+              size="small"
+            >
               More
             </Link>
             <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
+              expand={expanded[index]}
+              onClick={() => handleExpandClick(index)}
+              aria-expanded={expanded[index]}
               aria-label="show more"
             >
               <ExpandMoreIcon />
             </ExpandMore>
           </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph>
-                {/* Placeholder for expanded movie data.{movie.description} */}
+                <span>{movie.overview}</span>
+                <br />
+                <br />
+                <span>Genres: {movie.genres.join(", ")}</span>
+                <br />
+                <br />
+                <span>Released: {movie.release_date}</span>
               </Typography>
             </CardContent>
           </Collapse>

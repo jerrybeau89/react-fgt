@@ -54,13 +54,13 @@ body {
 }
 .movieCard {
   margin: 15px;
-  aspect-ratio: 3/4;
+  /* aspect-ratio: 3/4; */
   max-width: 300px;
   min-width: 300px;
 }
 .moviePage {
   margin-top: 15px;
-  aspect-ratio: 3/4;
+  /* aspect-ratio: 3/4; */
   max-width: 350px;
   min-width: 350px;
 }
